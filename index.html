@@ -1,0 +1,121 @@
+<html lang="en">
+    
+<!-- Mirrored from adamalsadi.github.io/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Sep 2024 02:03:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FN7LEVWXD"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-7FN7LEVWXD');
+        </script>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="images/ico.ico" type="image/x-icon">
+        <link rel="stylesheet" href="storage/css/index4.css">
+        <title>Home | PixelPulse</title>
+
+        <meta name="description" content="PixelPulse; an open source unblocked games website hosting 250+ games with downloadable support, a clean and centralised user interface and no iframe embedding">
+        <meta property="og:site_name" content="PixelPulse">
+        <meta property="og:title" content="PixelPulse">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="PixelPulse; an open source unblocked games website hosting 250+ games with downloadable support, a clean and centralised user interface and no iframe embedding">
+  </head>
+  <body>
+    
+      <div class="cursor"></div>
+      <div class="content-side">
+          <h1 class="typewriter"><span id="cursor"></span></h1>
+          <h2>version 7.3 / release build</h2>
+          <br>
+
+          <div class="button-container">
+              <div class="gamesbutton" onclick="window.location='games/index.html';">
+                  <img src="images/other/controller.png">
+                  <div class="button-text">
+                      <p>games</p>
+                  </div>
+              </div>
+          
+              <div class="gamesbutton" onclick="window.location='apps/index.html';">
+                  <a href="apps/index.html"><img src="images/other/apps.png"></a>
+                  <div class="button-text">
+                      <p>apps</p>
+                  </div>
+              </div>
+          </div>
+          
+
+          <br>
+
+          <p class="linkp"><a href="settings.html">settings</a></p>
+           • <a href="data.html">data policy</a></p>
+          
+          <br>
+          <a href="https://classroom.google.com" target="_blank" style="text-decoration: none;">˗ˏˋwebsite created & developed by <span id="cycle-text">068</span>. If someone sold/traded something for this website other than its respective creator, demand a refund. ´ˎ˗</a>
+
+              
+      </div>
+      <style>
+        /* Fade effect for the <p> tag */
+        #cycle-text {
+            font-size: 20px;
+            transition: opacity 1s ease-in-out;
+            opacity: 1;
+        }
+    </style>
+    <script>
+        // Words to cycle through
+        const words = ["068", "105", "108", "108", "111", "110"];
+        let index = 0;
+    
+        const textElement = document.getElementById("cycle-text");
+    
+        // Function to update the text and apply fade effect
+        function cycleWords() {
+            textElement.style.opacity = 0; // Fade out
+    
+            setTimeout(() => {
+                index = (index + 1) % words.length; // Move to the next word
+                textElement.textContent = words[index]; // Update the text
+                textElement.style.opacity = 1; // Fade in
+            }, 550); // Time for the fade-out effect
+        }
+    
+        // Set an interval to cycle the words every 2 seconds
+        setInterval(cycleWords, 1200);
+    </script>
+
+      <script>
+        const text = "PixelPulse";
+        const typingDelay = 500; 
+        const initialDelay = 100; 
+        const cursor = document.getElementById("cursor");
+        const h1 = document.querySelector(".typewriter");
+
+        function type() {
+            setTimeout(() => {
+                for (let i = 0; i < text.length; i++) {
+                setTimeout(() => {
+                    h1.textContent += text[i];
+                    if (i === text.length - 1) {
+                    cursor.style.display = "none"; 
+                    }
+                }, i * typingDelay);
+                }
+            }, initialDelay);
+        }
+
+        type();
+      </script>
+
+      <script src="storage/js/cursor.js"></script>
+      <script src="storage/js/cloak.js"></script>
+      <script src="storage/js/themes.js"></script>
+  </body>
+
+<!-- Mirrored from adamalsadi.github.io/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Sep 2024 02:03:14 GMT -->
+</html>

@@ -1,0 +1,184 @@
+<html lang="en">
+    
+<!-- Mirrored from adamalsadi.github.io/settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Sep 2024 02:05:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FN7LEVWXD"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-7FN7LEVWXD');
+        </script>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="images/ico.ico" type="image/x-icon">
+        <link rel="stylesheet" href="storage/css/settings4.css">
+        <title>Settings | PixelPulse</title>
+
+        <meta name="description" content="PixelPulse; an open source unblocked games website hosting 100+ games with downloadable support, a clean and centralised user interface and no iframe embedding">
+        <meta property="og:site_name" content="PixelPulse">
+        <meta property="og:title" content="PixelPulse">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="PixelPulse; an open source unblocked games website hosting 100+ games with downloadable support, a clean and centralised user interface and no iframe embedding">
+
+        <style>
+            button {
+                margin: 2px;
+            }
+        </style>
+        
+  </head>
+  <body>
+    <div class="cursor"></div>
+    <div class="content-side">
+        <h1>settings</h1>
+        <a href="index-2.html" style="font-size: 18px;">go to homepage</a>
+        
+        <br>
+        <h2 style="margin: 0;">cloak</h2>
+        <p> mask PixelPulse with a tab cloak! </p>
+        <br>
+        <select id="presetSelect">
+            <option value="google">google</option>
+            <option value="googleclassroom">google classroom</option>
+            <option value="googledrive">google drive</option>
+            <option value="chrometab">chrome new tab</option>
+            <option value="gmail">gmail</option>
+
+            <option value="bing">bing</option>
+            <option value="desmos">desmos calculator</option>
+            <option value="wikipedia">wikipedia</option>
+
+
+        </select>
+
+        <button id="saveButton">select preset cloak</button>
+        <button id="resetButton">reset cloak</button>
+        <p id="success" style="display: none;">success message here</p>
+
+        <br>
+        <h2 style="margin: 0;">themes</h2>
+        <p> change the theme of the website here! </p>
+        <br>
+        <select id="theme-select">
+            <option value="PixelPulse">PixelPulse</option>
+            <option value="azurite">azurite</option>
+            <option value="retro">retro</option>
+            <option value="cosmic">cosmic</option>
+            <option value="molten">molten</option>
+            <option value="amethyst">amethyst</option>
+            <option value="ethereal">ethereal</option>
+        </select>
+
+        <button id="apply-theme">apply theme</button>
+
+        <script src="storage/js/cursor.js"></script>
+        <script src="storage/js/cloak.js"></script>
+
+        <script>
+            function applyTheme() {
+                const selectedTheme = document.getElementById('theme-select');
+                if (selectedTheme) {
+                    const themeValue = selectedTheme.value;
+                    document.documentElement.className = `theme-${themeValue}`;
+                    localStorage.setItem('selectedTheme', themeValue);
+                }
+            }
+
+            const storedTheme = localStorage.getItem('selectedTheme');
+            if (storedTheme) {
+                const selectElement = document.getElementById('theme-select');
+                if (selectElement) {
+                    selectElement.value = storedTheme;
+                    applyTheme();
+                }
+            }
+
+            const applyButton = document.getElementById('apply-theme');
+            if (applyButton) {
+                applyButton.addEventListener('click', applyTheme);
+            }
+        </script>
+
+        <script>
+            function setCookie(name, value, options) {
+                options = options || {};
+
+                let expires = options.expires;
+
+                if (typeof expires == "number" && expires) {
+                    const d = new Date();
+                    d.setTime(d.getTime() + expires * 24 * 60 * 60 * 1000);
+                    expires = options.expires = d;
+                }
+
+                if (expires && expires.toUTCString) {
+                    options.expires = expires.toUTCString();
+                }
+
+                value = encodeURIComponent(value);
+
+                let updatedCookie = name + "=" + value;
+
+                for (const propName in options) {
+                    updatedCookie += "; " + propName;
+                    const propValue = options[propName];
+                    if (propValue !== true) {
+                        updatedCookie += "=" + propValue;
+                    }
+                }
+
+                document.cookie = updatedCookie;
+            }
+
+            function getCookie(name) {
+                const matches = document.cookie.match(new RegExp(
+                    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+                ));
+                return matches ? decodeURIComponent(matches[1]) : undefined;
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                const presetSelect = document.getElementById("presetSelect");
+                const saveButton = document.getElementById("saveButton");
+                const resetButton = document.getElementById("resetButton");
+                const successMessage = document.getElementById("success");
+
+                const selectedPreset = getCookie("tabCloakPreset");
+                if (selectedPreset) {
+                    presetSelect.value = selectedPreset;
+                }
+
+                saveButton.addEventListener("click", function() {
+                    const selectedValue = presetSelect.value;
+                    successMessage.textContent = "preset chosen! refresh the page to see changes";
+                    setCookie("tabCloakPreset", selectedValue, { expires: 365 });
+
+                    successMessage.style.display = "block";
+                    setTimeout(function() {
+                        successMessage.style.display = "none";
+                    }, 3000);
+                });
+
+                resetButton.addEventListener("click", function() {
+                    deleteCookie("tabCloakPreset");
+                    presetSelect.selectedIndex = 0;
+                    successMessage.textContent = "cloaking reset, refresh the page to see changes";
+                    successMessage.style.display = "block";
+                    setTimeout(function() {
+                        successMessage.style.display = "none";
+                    }, 3000);
+                });
+
+                function deleteCookie(name) {
+                    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                }
+            });
+        </script>
+  </body>
+
+<!-- Mirrored from adamalsadi.github.io/settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Sep 2024 02:05:41 GMT -->
+</html>
